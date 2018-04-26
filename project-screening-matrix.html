@@ -76,8 +76,8 @@
                                 <option value=1>High</option>
                             </select>
                         </td>
-                        <td><input type="number" step="any" id="t_constrain_val" required></td>
-                        <td><input type="number" step="any" id="t_constrain_result" required></td>
+                        <td><input type="number" step="any" id="tconstrain_val" required></td>
+                        <td><input type="text" step="any" id="tconstrain_result" required></td>
                     </tr>
                     <tr>
                         <td>Status of Environmental Approvals</td>
@@ -90,7 +90,7 @@
                             </select>
                         </td>
                         <td><input type="number" step="any" id="envaprov_val" required></td>
-                        <td><input type="number" step="any" id="envaprov_result" required></td>
+                        <td><input type="text" step="any" id="envaprov_result" required></td>
                     </tr>
                     <tr>
                         <td>Availability of funding</td>
@@ -103,7 +103,7 @@
                             </select>
                         </td>
                         <td><input type="number" step="any" id="fundaval_val" required></td>
-                        <td><input type="number" step="any" id="fundaval_result" required></td>
+                        <td><input type="text" step="any" id="fundaval_result" required></td>
                     </tr>
                     <tr>
                         <td>Well defined scope</td>
@@ -116,7 +116,7 @@
                             </select>
                         </td>
                         <td><input type="number" step="any" id="wdef_scope_val" required></td>
-                        <td><input type="number" step="any" id="wdef_scope_result" required></td>
+                        <td><input type="text" step="any" id="wdef_scope_result" required></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -155,7 +155,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="over_prj_complex_val" required></td>
-                            <td><input type="number" step="any" id="over_prj_complex_result" required></td>
+                            <td><input type="text" step="any" id="over_prj_complex_result" required></td>
                         </tr>
                         <tr>
                             <td>Complexity of performance requirements</td>
@@ -168,7 +168,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="complex_perf_reqs_val" required></td>
-                            <td><input type="number" step="any" id="complex_perf_reqs_result" required></td>
+                            <td><input type="text" step="any" id="complex_perf_reqs_result" required></td>
                         </tr>
                         <tr>
                             <td>Project size</td>
@@ -181,7 +181,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="prj_size_val" required></td>
-                            <td><input type="number" step="any" id="prj_size_result" required></td>
+                            <td><input type="text" step="any" id="prj_size_result" required></td>
                         </tr>
                         <tr>
                             <td>Availability of qualified teams</td>
@@ -194,7 +194,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="qual_tm_aval_val" required></td>
-                            <td><input type="number" step="any" id="qual_tm_aval_result" required></td>
+                            <td><input type="text" step="any" id="qual_tm_aval_result" required></td>
                         </tr>
                         <tr>
                             <td>Owner experience and resources</td>
@@ -207,7 +207,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="own_xp_res_val" required></td>
-                            <td><input type="number" step="any" id="own_xp_res_result" required></td>
+                            <td><input type="text" step="any" id="own_xp_res_result" required></td>
                         </tr>
                         <tr>
                             <td>Cost of project</td>
@@ -220,7 +220,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="cost_proj_val" required></td>
-                            <td><input type="number" step="any" id="cost_proj_result" required></td>
+                            <td><input type="text" step="any" id="cost_proj_result" required></td>
                         </tr>
                         <tr>
                             <td>Degree of team collaboration</td>
@@ -233,7 +233,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="team_colab_val" required></td>
-                            <td><input type="number" step="any" id="team_colab_result" required></td>
+                            <td><input type="text" step="any" id="team_colab_result" required></td>
                         </tr>
                         <tr>
                             <td>Number of contracts</td>
@@ -246,12 +246,12 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="num_contract_val" required></td>
-                            <td><input type="number" step="any" id="num_contract_result" required></td>
+                            <td><input type="text" step="any" id="num_contract_result" required></td>
                         </tr>
                         <tr>
                             <td>Allocation of risks</td>
                             <td>
-                                <select id="risk_alloc_select">
+                                <select id="risk_alloc_select" onchange="calculateElement('risk_alloc','SECONDARY');">
                                     <option disabled selected>Seleccionar un rating</option>
                                     <option value=0.2>Low</option>
                                     <option value=0.6>Medium</option>
@@ -259,7 +259,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="risk_alloc_val" required></td>
-                            <td><input type="number" step="any" id="risk_alloc_result" required></td>
+                            <td><input type="text" step="any" id="risk_alloc_result" required></td>
                         </tr>
                         <tr>
                             <td>Interest in innovation</td>
@@ -272,7 +272,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="int_innov_val" required></td>
-                            <td><input type="number" step="any" id="int_innov_result" required></td>
+                            <td><input type="text" step="any" id="int_innov_result" required></td>
                         </tr>
                     </tbody>
                 </table>
@@ -299,7 +299,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="data_sec_val" required></td>
-                            <td><input type="number" step="any" id="data_sec_result" required></td>
+                            <td><input type="text" step="any" id="data_sec_result" required></td>
                         </tr>
                         <tr>
                             <td>Operational constraints</td>
@@ -312,7 +312,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="oper_constraint_val" required></td>
-                            <td><input type="number" step="any" id="oper_constraint_result" required></td>
+                            <td><input type="text" step="any" id="oper_constraint_result" required></td>
                         </tr>
                         <tr>
                             <td>Utility relocations</td>
@@ -325,7 +325,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="util_raloc_val" required></td>
-                            <td><input type="number" step="any" id="util_raloc_result" required></td>
+                            <td><input type="text" step="any" id="util_raloc_result" required></td>
                         </tr>
                         <tr>
                             <td>QC/QA responsibilities</td>
@@ -338,7 +338,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="qc_resp_val" required></td>
-                            <td><input type="number" step="any" id="qc_resp_result" required></td>
+                            <td><input type="text" step="any" id="qc_resp_result" required></td>
                         </tr>
                         <tr>
                             <td>Performance guarantees/warranties</td>
@@ -351,7 +351,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="perf_warrant_val" required></td>
-                            <td><input type="number" step="any" id="perf_warrant_result" required></td>
+                            <td><input type="text" step="any" id="perf_warrant_result" required></td>
                         </tr>
                         <tr>
                             <td>Design reviews/approvals</td>
@@ -364,7 +364,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="design_revs_val" required></td>
-                            <td><input type="number" step="any" id="design_revs_result" required></td>
+                            <td><input type="text" step="any" id="design_revs_result" required></td>
                         </tr>
                         <tr>
                             <td>Legal frame or requirements </td>
@@ -377,7 +377,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="legal_frames_req_val" required></td>
-                            <td><input type="number" step="any" id="legal_frames_req_result" required></td>
+                            <td><input type="text" step="any" id="legal_frames_req_result" required></td>
                         </tr>
                         <tr>
                             <td>Ownership of intellectual property</td>
@@ -390,7 +390,7 @@
                                 </select>
                             </td>
                             <td><input type="number" step="any" id="own_intelectual_val" required></td>
-                            <td><input type="number" step="any" id="own_intelectual_result" required></td>
+                            <td><input type="text" step="any" id="own_intelectual_result" required></td>
                         </tr>
                     </tbody>
                 </table>
