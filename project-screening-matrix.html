@@ -17,9 +17,7 @@
 				<script src="js/use.js"></script>
 				<script src="js/Comms.js"></script>
 
-				<script src="js/modules/NetPresentValue.js"></script>
-				<script src="js/modules/PaybackPeriod.js"></script>
-        
+                <script src="js/modules/ProjectScreeningMatrix.js"></script>
         <title>Project Evaluator</title>
     </head>
     <body>
@@ -55,7 +53,7 @@
             	</div>
 		    </div>        
         </header>
-        <section class="third">
+        <section class="first">
             <div id="" class="tabcontent">
                 <h3>Primary considerations</h3>
                 <table id="primary_considerations">
@@ -71,7 +69,7 @@
                     <tr>
                         <td>Time constraints for project delivery</td>
                         <td>
-                            <select id="tconstrain_select">
+                            <select id="tconstrain_select" onchange="calculateElement('tconstrain','PRIMARY');">
                                 <option disabled selected>Seleccionar un rating</option>
                                 <option value=0.2>Low</option>
                                 <option value=0.6>Medium</option>
@@ -84,7 +82,7 @@
                     <tr>
                         <td>Status of Environmental Approvals</td>
                         <td>
-                            <select id="envaprov_select">
+                            <select id="envaprov_select" onchange="calculateElement('envaprov','PRIMARY');">
                                 <option disabled selected>Seleccionar un rating</option>
                                 <option value=0.2>Low</option>
                                 <option value=0.6>Medium</option>
@@ -97,7 +95,7 @@
                     <tr>
                         <td>Availability of funding</td>
                         <td>
-                            <select id="fundaval_select">
+                            <select id="fundaval_select" onchange="calculateElement('fundaval','PRIMARY');">
                                 <option disabled selected>Seleccionar un rating</option>
                                 <option value=0.2>Low</option>
                                 <option value=0.6>Medium</option>
@@ -110,7 +108,7 @@
                     <tr>
                         <td>Well defined scope</td>
                         <td>
-                            <select id="wdef_scope_select">
+                            <select id="wdef_scope_select" onchange="calculateElement('wdef_scope','PRIMARY');">
                                 <option disabled selected>Seleccionar un rating</option>
                                 <option value=0.2>Low</option>
                                 <option value=0.6>Medium</option>
@@ -120,6 +118,18 @@
                         <td><input type="number" step="any" id="wdef_scope_val" required></td>
                         <td><input type="number" step="any" id="wdef_scope_result" required></td>
                     </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td></td>
+                        <td>Weighted Total</td>
+                        <td id="PRIMARY_TOTAL_W"></td>
+                    </tr> 
                 </tbody>
                 </table>
                 <hr>
@@ -137,20 +147,20 @@
                         <tr>
                             <td>Overall project complexity</td>
                             <td>
-                                <select id="over_prj_complex_select">
+                                <select id="over_prj_complex_select" onchange="calculateElement('over_prj_complex','SECONDARY');">
                                     <option disabled selected>Seleccionar un rating</option>
                                     <option value=0.2>Low</option>
                                     <option value=0.6>Medium</option>
                                     <option value=1>High</option>
                                 </select>
                             </td>
-                            <td><input type="number" step="any" max="10" id="over_prj_complex_val" required></td>
-                            <td><input type="number" step="any" max="10" id="over_prj_complex_result" required></td>
+                            <td><input type="number" step="any" id="over_prj_complex_val" required></td>
+                            <td><input type="number" step="any" id="over_prj_complex_result" required></td>
                         </tr>
                         <tr>
                             <td>Complexity of performance requirements</td>
                             <td>
-                                <select id="complex_perf_reqs_select">
+                                <select id="complex_perf_reqs_select" onchange="calculateElement('complex_perf_reqs','SECONDARY');">
                                     <option disabled selected>Seleccionar un rating</option>
                                     <option value=0.2>Low</option>
                                     <option value=0.6>Medium</option>
@@ -163,7 +173,7 @@
                         <tr>
                             <td>Project size</td>
                             <td>
-                                <select id="prj_size_select">
+                                <select id="prj_size_select" onchange="calculateElement('prj_size','SECONDARY');">
                                     <option disabled selected>Seleccionar un rating</option>
                                     <option value=0.2>Low</option>
                                     <option value=0.6>Medium</option>
@@ -176,7 +186,7 @@
                         <tr>
                             <td>Availability of qualified teams</td>
                             <td>
-                                <select id="qual_tm_aval_select">
+                                <select id="qual_tm_aval_select" onchange="calculateElement('qual_tm_aval','SECONDARY');">
                                     <option disabled selected>Seleccionar un rating</option>
                                     <option value=0.2>Low</option>
                                     <option value=0.6>Medium</option>
@@ -189,7 +199,7 @@
                         <tr>
                             <td>Owner experience and resources</td>
                             <td>
-                                <select id="own_xp_res_select">
+                                <select id="own_xp_res_select" onchange="calculateElement('own_xp_res','SECONDARY');">
                                     <option disabled selected>Seleccionar un rating</option>
                                     <option value=0.2>Low</option>
                                     <option value=0.6>Medium</option>
@@ -202,7 +212,7 @@
                         <tr>
                             <td>Cost of project</td>
                             <td>
-                                <select id="cost_proj_select">
+                                <select id="cost_proj_select" onchange="calculateElement('cost_proj','SECONDARY');">
                                     <option disabled selected>Seleccionar un rating</option>
                                     <option value=0.2>Low</option>
                                     <option value=0.6>Medium</option>
@@ -215,7 +225,7 @@
                         <tr>
                             <td>Degree of team collaboration</td>
                             <td>
-                                <select id="team_colab_select">
+                                <select id="team_colab_select" onchange="calculateElement('team_colab','SECONDARY');">
                                     <option disabled selected>Seleccionar un rating</option>
                                     <option value=0.2>Low</option>
                                     <option value=0.6>Medium</option>
@@ -228,7 +238,7 @@
                         <tr>
                             <td>Number of contracts</td>
                             <td>
-                                <select id="num_contract_select">
+                                <select id="num_contract_select" onchange="calculateElement('num_contract','SECONDARY');">
                                     <option disabled selected>Seleccionar un rating</option>
                                     <option value=0.2>Low</option>
                                     <option value=0.6>Medium</option>
@@ -254,7 +264,7 @@
                         <tr>
                             <td>Interest in innovation</td>
                             <td>
-                                <select id="int_innov_select">
+                                <select id="int_innov_select" onchange="calculateElement('int_innov','SECONDARY');">
                                     <option disabled selected>Seleccionar un rating</option>
                                     <option value=0.2>Low</option>
                                     <option value=0.6>Medium</option>
@@ -278,7 +288,137 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        <tr>
+                            <td>Data Security</td>
+                            <td>
+                                <select id="data_sec_select" onchange="calculateElement('data_sec','OTHER');">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="data_sec_val" required></td>
+                            <td><input type="number" step="any" id="data_sec_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>Operational constraints</td>
+                            <td>
+                                <select id="oper_constraint_select" onchange="calculateElement('oper_constraint','OTHER');">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="oper_constraint_val" required></td>
+                            <td><input type="number" step="any" id="oper_constraint_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>Utility relocations</td>
+                            <td>
+                                <select id="util_raloc_select" onchange="calculateElement('util_raloc','OTHER');">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="util_raloc_val" required></td>
+                            <td><input type="number" step="any" id="util_raloc_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>QC/QA responsibilities</td>
+                            <td>
+                                <select id="qc_resp_select" onchange="calculateElement('qc_resp','OTHER');">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="qc_resp_val" required></td>
+                            <td><input type="number" step="any" id="qc_resp_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>Performance guarantees/warranties</td>
+                            <td>
+                                <select id="perf_warrant_select" onchange="calculateElement('perf_warrant','OTHER');">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="perf_warrant_val" required></td>
+                            <td><input type="number" step="any" id="perf_warrant_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>Design reviews/approvals</td>
+                            <td>
+                                <select id="design_revs_select" onchange="calculateElement('design_revs','OTHER');">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="design_revs_val" required></td>
+                            <td><input type="number" step="any" id="design_revs_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>Legal frame or requirements </td>
+                            <td>
+                                <select id="legal_frames_req_select" onchange="calculateElement('legal_frames_req','OTHER');">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="legal_frames_req_val" required></td>
+                            <td><input type="number" step="any" id="legal_frames_req_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>Ownership of intellectual property</td>
+                            <td>
+                                <select id="own_intelectual_select" onchange="calculateElement('own_intelectual','OTHER');">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="own_intelectual_val" required></td>
+                            <td><input type="number" step="any" id="own_intelectual_result" required></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <br>
+                <h3>Subtotals</h3>
+                <table>
+                    <thead>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Primary considerations</td>
+                            <td>40</td>
+                            <td id="PRIMARY_cons"></td>
+                        </tr>
+                        <tr>
+                            <td>Secondary considerations</td>
+                            <td>35</td>
+                            <td id="SECONDARY_cons"></td>
+                        </tr>
+                        <tr>
+                            <td>Other considerations</td>
+                            <td>25</td>
+                            <td id="OTHER_cons"></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
