@@ -287,49 +287,36 @@
 					  <label class="label00">
 					    <input type="text" required id="depCategory"/>
 					    <div class="label-text">Categoria</div>
-					  </label>
+						</label>
+						<label class="label00">
+								<input type="text" required id="depSalvage"/>
+								<div class="label-text">Salvage Value</div>
+							</label>
 				  </section>
 				  <br>
 				  <section class="btnSec-7">
 					  <button onclick="createTableFields($('#depPeriods').val(),$('#depPrincipal').val(),'tblDivDEPCntent','DEP');" class="cal1">Capturar cash flow</button>
 				  	  <button onclick="clickDep()" class="cal00">Calcular SL</button>
-			      	  <button onclick="clickDep()" class="cal00">Carcular MACRS</button>
+			      	  <button onclick="clickDep1()" class="cal00">Carcular MACRS</button>
 			      	  <button onclick="showHideDiv('divDep')" class="cal00">Limpiar Datos</button>
 		        	  <button onclick="showHideDiv('divDep')" class="cal00">Pasar a PDF</button>
 		          </section>
 		          <section class="rowDep2">
-                      
-			          <label class="label01">
-					    <input type="text" required id="depSalvage"/>
-					    <div class="label-text">Salvage Value</div>
-					  </label>
-					  <label class="label01">
-					    <input type="text" required id="devPeriod"/>
-					    <div class="label-text">Period</div>
-					  </label>
-                      <label class="label01">
-					    <input type="text" required id="startYear"/>
-					    <div class="label-text">Starting Year</div>
-					  </label>
-                    
-				  </section>
+
+							<table>
+								<thead>
+									<th>Period</th>
+									<th>Depreciation for period</th>
+									<th>Depreciation accrued</th>
+								</thead>
+								<tbody id="depreciation">
+
+								</tbody>
+							</table>
+
 			  </section>
-			  <section class="third">
-					<table>
-							<thead>
-								<th></th>
-								<th style="font-size: 15px; letter-spacing: 2px;">Dep Rate</th>
-								<th style="font-size: 15px; letter-spacing: 2px;">Dep Per Period</th> 
-								<th style="font-size: 15px; letter-spacing: 2px;">Cumulative Dep</th>
-                                <th style="font-size: 15px; letter-spacing: 2px;">Value Ledgers</th>
-                                <th style="font-size: 15px; letter-spacing: 2px;">Tax Per Rate</th>
-							</thead>
-							<tbody id="tblDivDEPCntent">
-	
-							</tbody>
-					</table>
-			  </section>
-			
 			</div>
+
+			<div></div>
     </body>
 </html>
