@@ -119,4 +119,84 @@ public class ProjectScreening {
 
         return result;
     }
+
+        //Depreciation
+        private Vector<Depreciation> getJSONDepreciation(String jsonParseable){
+            JSONArray JSarray = new JSONArray(jsonParseable);
+    
+            Vector<Depreciation> vect = new Vector<Depreciation>(JSarray.length());
+             
+            Vector<Double> anArray = new Vector<Double>();
+    
+            Depreciation cur = vect.get(0);
+    
+             //duda -> xD
+            int category = cur.getCategory();
+
+            double Principal= cur.getPrincipal();
+    
+            if(category == 5)
+            {
+                double[] axArray = {20,32,19.2,11.52,11.52,5.76,1,1,1,1,1};
+                
+                for(int i = 0; i < axArray.length; i++)
+                    anArray.add(i, axArray[i]);
+            }
+             
+            if(category == 3)
+            {
+                double axArray[] = {33.33,44.45,14.81,7.41,1,1,1,1,1,1,1};
+    
+                for(int i = 0; i < axArray.length; i++)
+                    anArray.add(i, axArray[i]);
+            }
+             
+            if(category == 7)
+            {
+                double axArray[] = {14.29,24.49,17.49,12.49,8.93,8.92,8.93,4.46,1,1,1};
+    
+                for(int i = 0; i < axArray.length; i++)
+                    anArray.add(i, axArray[i]);
+            }
+             
+            if(category == 10)
+            {
+                double axArray[] = {10,18,14.4,11.52,9.22,7.37,6.55,6.55,6.56,6.55,3.28};
+    
+                for(int i = 0; i < axArray.length; i++)
+                    anArray.add(i, axArray[i]);
+            }
+                
+            for (int i = 0; i < JSarray.length(); i++) {
+                JSONObject curr = (JSONObject)JSarray.get(i);
+    
+                Depreciation cFlow = new Depreciation();
+    
+                cFlow.setPeriod(curr.getInt("period"));
+                cFlow.setMacrsRate(anArray.get(i));
+                cFlow.setDepreciationPeriod((anArray.get(i)/100)*(Double.parseDouble(curr.getString("principal"))));
+                //cFlow.setDepreciationAccrued(((anArray.get(i)/100)*(Double.parseDouble(curr.getString("principal")))+((anArray.get(i-1)/100)*(Double.parseDouble(curr.getString("principal")))));
+                cFlow.setValueInLedgers((1+anArray.get(i)/100)*(Double.parseDouble(curr.getString("principal"))));
+                cFlow.setTaxPerYear(0);
+                cFlow.setTaxRate(Double.parseDouble(curr.getString("taxrate")));
+                cFlow.setSalvageValue(Double.parseDouble(curr.getString("salvageval")));
+    
+                vect.add(i, cFlow);
+            }
+    
+            return vect;
+        }
+        
+        //This method accepts a string json formatted
+        public String _getDepreciation(String jsonParseable){
+            String result = "";
+
+            Vector<Depreciation> depresed = getJSONDepreciation(jsonParseable);
+
+            for(int i = 0; i < depresed.size(); i++){
+                result+="period="+depresed.get(i).getPeriod()+"&depXperiod="+depresed.get(i).getDepreciationPeriod()+"|";
+            }
+
+            return result;
+        }
 }

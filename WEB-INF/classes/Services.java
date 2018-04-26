@@ -37,6 +37,14 @@ public class Services extends HttpServlet {
                 response.setCharacterEncoding("UTF-8");
                 response.getWriter().write(ans);
                 break;
+            
+            case "dep":
+                ans = services._getDepreciation(request.getParameter("data"));
+
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write(ans);
+                break;
 
             default:
                 break;
