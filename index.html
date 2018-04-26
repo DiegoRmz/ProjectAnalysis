@@ -19,6 +19,7 @@
 
 				<script src="js/modules/NetPresentValue.js"></script>
 				<script src="js/modules/PaybackPeriod.js"></script>
+				<script src="js/modules/Depreciation.js"></script>
         
         <title>Project Evaluator</title>
     </head>
@@ -49,7 +50,7 @@
 				<div class="tab">
 	                <button onclick="showHideDiv('divPay')" class="tablinks btn btn--white btn--animated">Payback Period</button>
 									<button onclick="showHideDiv2('divNpv')" class="tablinks btn2 btn2--white btn2--animated">NPV</button>
-									<button onclick="showHideDiv4('divDep')" class="tablinks btn4 btn4--white btn3--animated">Depreciation</button>
+									<button onclick="showHideDiv4('divDep')" class="tablinks btn3 btn3--white btn3--animated">Depreciation</button>
 									<button onclick="showHideDiv3('divChe')" class="tablinks btn4 btn4--white btn4--animated">Checklist</button>
 									<a href="project-screening-matrix.html" class="tablinks btnSec-5 btn4--white btn4--animated">Screening Matrix</a>
             	</div>
@@ -268,11 +269,67 @@
 			</div>
 
 			<div id="divDep" class="tabcontent">
+			  
 			  <section class="first row">
-				  <section class="btnSec-5">
-				  	<button onclick="showHideDiv('divPay')" class="cal1">Sacar en Excel</button>
+			  	  <section class="rowDep">
+					  <label class="label00">
+					    <input  type="text" id="depPeriods" required />
+					    <div class="label-text">Periodos</div>
+					  </label>
+					  <label class="label00">
+					    <input type="text" id="depPrincipal" required />
+					    <div class="label-text">Principal</div>
+					  </label>
+					  <label class="label00">
+					    <input type="text" id="depTax" required />
+					    <div class="label-text">Tasa de interes(%)</div>
+					  </label>
+					  <label class="label00">
+					    <input type="text" required id="depCategory"/>
+					    <div class="label-text">Categoria</div>
+					  </label>
+				  </section>
+				  <br>
+				  <section class="btnSec-7">
+					  <button onclick="createTableFields($('#depPeriods').val(),$('#depPrincipal').val(),'tblDivDEPCntent','DEP');" class="cal1">Capturar cash flow</button>
+				  	  <button onclick="clickDep()" class="cal00">Calcular SL</button>
+			      	  <button onclick="clickDep()" class="cal00">Carcular MACRS</button>
+			      	  <button onclick="showHideDiv('divDep')" class="cal00">Limpiar Datos</button>
+		        	  <button onclick="showHideDiv('divDep')" class="cal00">Pasar a PDF</button>
 		          </section>
+		          <section class="rowDep2">
+                      
+			          <label class="label01">
+					    <input type="text" required id="depSalvage"/>
+					    <div class="label-text">Salvage Value</div>
+					  </label>
+					  <label class="label01">
+					    <input type="text" required id="devPeriod"/>
+					    <div class="label-text">Period</div>
+					  </label>
+                      <label class="label01">
+					    <input type="text" required id="startYear"/>
+					    <div class="label-text">Starting Year</div>
+					  </label>
+                    
+				  </section>
 			  </section>
+			  <section class="third">
+					<table>
+							<thead>
+								<th></th>
+								<th style="font-size: 15px; letter-spacing: 2px;">Dep Rate</th>
+								<th style="font-size: 15px; letter-spacing: 2px;">Dep Per Period</th> 
+								<th style="font-size: 15px; letter-spacing: 2px;">Cumulative Dep</th>
+                                <th style="font-size: 15px; letter-spacing: 2px;">Value Ledgers</th>
+                                <th style="font-size: 15px; letter-spacing: 2px;">Tax Per Rate</th>
+							</thead>
+							<tbody id="tblDivDEPCntent">
+	
+							</tbody>
+					</table>
+			  </section>
+			
 			</div>
     </body>
 </html>

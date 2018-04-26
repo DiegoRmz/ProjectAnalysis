@@ -99,6 +99,8 @@ function createTableFields(periodNo, principal, tableId, foreType) {
 	$("#outflow"+foreType+'0').val(principal);
 }
 
+
+
 function parseURLFormat(url){
     var obj = {};
     url = url.split("&");
