@@ -6,9 +6,9 @@ subTotals['SECONDARY']=0;
 subTotals['OTHER']   = 0;  
 
 var factors = {};
-factors.PRIMARY  = 0.4;
+factors.PRIMARY  = 0.5;
 factors.SECONDARY=0.35;
-factors.OTHER    =0.25;
+factors.OTHER    =0.15;
 
 var history = {};
 
@@ -30,9 +30,27 @@ function _calculatePElement(idTrace, origin) {
 
     history[idTrace] = holder;
 
-    $("#"+idTrace+"_result").html(holder);
+    $("#"+idTrace+"_result").val(holder);
 
     $("#"+origin+"_TOTAL_W").html(subTotals[origin]);
 
-    $("#"+origin+"_cons").html(subTotals[origin]*factors[origin]);    
+    $("#"+origin+"_cons").html(subTotals[origin]*factors[origin]);  
+    
+    passProject();
+}
+
+function passProject(){
+    var tot = 0;
+
+    Object.keys(subTotals).forEach(function (item) {
+        tot+=subTotals[item];
+    });
+
+    if(tot < 50){
+        $("#resultssss").html("No pasa: "+tot);
+    }else if(tot > 65){
+        $("#resultssss").html("Do it: "+tot);
+    }else{
+        $("#resultssss").html("Maybe: "+tot);
+    }
 }
