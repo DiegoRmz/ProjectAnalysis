@@ -89,8 +89,8 @@ function createTableFields(periodNo, principal, tableId, foreType) {
 		$("#"+tableId).append(
 			"<tr>"+
 				"<td>"+i+"</td>"+
-				"<td>"+"<input type='text' id='inflow"+foreType+i+"'>"+"</td>"+
-				"<td>"+"<input type='text' id='outflow"+foreType+i+"'>"+"</td>"+
+				"<td>"+"<input type='number' step='any' id='inflow"+foreType+i+"'>"+"</td>"+
+				"<td>"+"<input type='number' step='any' id='outflow"+foreType+i+"'>"+"</td>"+
 				"<td>"+"<input type='text' id='cumulative"+foreType+i+"'>"+"</td>"+
 			"</tr>"
 		);		

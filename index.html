@@ -18,6 +18,7 @@
 				<script src="js/Comms.js"></script>
 
 				<script src="js/modules/NetPresentValue.js"></script>
+				<script src="js/modules/PaybackPeriod.js"></script>
         
         <title>Project Evaluator</title>
     </head>
@@ -47,9 +48,10 @@
 				</form>
 				<div class="tab">
 	                <button onclick="showHideDiv('divPay')" class="tablinks btn btn--white btn--animated">Payback Period</button>
-	                <button onclick="showHideDiv2('divNpv')" class="tablinks btn2 btn2--white btn2--animated">NPV</button>
-	                <button onclick="showHideDiv3('divChe')" class="tablinks btn3 btn3--white btn3--animated">Checklist</button>
-	                <button onclick="showHideDiv4('divDep')" class="tablinks btn4 btn4--white btn4--animated">Depreciation</button>
+									<button onclick="showHideDiv2('divNpv')" class="tablinks btn2 btn2--white btn2--animated">NPV</button>
+									<button onclick="showHideDiv4('divDep')" class="tablinks btn4 btn4--white btn4--animated">Depreciation</button>
+									<button onclick="showHideDiv3('divChe')" class="tablinks btn3 btn3--white btn3--animated">Checklist</button>
+									<a href="project-screening-matrix.html" class="tablinks btn3 btn3--white btn3--animated">Screening Matrix</a>
             	</div>
 		    </div>        
         </header>
@@ -59,21 +61,25 @@
 			  <section class="first row">
 			  	  
 				  <label class="label1">
-				    <input type="text" required id="paybackPeriods"/>
+				    <input type="number" step="any" required id="paybackPeriods"/>
 				    <div class="label-text">Periodos</div>
 				  </label>
 				  <label class="label1">
-				    <input type="text" required id="paybackPrincipal"/>
+				    <input type="number" step="any" required id="paybackPrincipal"/>
 				    <div class="label-text" >Principal</div>
 				  </label>
 				  <label class="label1">
-				    <input type="text" required id="paybackInterest" />
+				    <input type="number" step="any" required id="paybackInterest" />
 				    <div class="label-text"  >Tasa de interes(%)</div>
+					</label>
+					<label class="label1">
+				    <input type="number" step="any" required id="paybackSalvage" />
+				    <div class="label-text"  >Salvage Value</div>
 				  </label>
 				  <br>
 				  <section class="btnSec">
 							<button onclick="createTableFields($('#paybackPeriods').val(),$('#paybackPrincipal').val(),'tblDivPayCntent','PaybackPeriod');" class="cal1">Capturar cash flow</button>
-				  		<button class="cal1">Calcular</button>
+				  		<button class="cal1" onclick="clickPaybackPeriod();">Calcular</button>
 		          <button onclick="showHideDiv('divNpv')" class="cal2">Limpiar Datos</button>
 		          <button onclick="showHideDiv('divPay')" class="cal3">Pasar a Excel</button>
 		          <button onclick="showHideDiv('divNpv')" class="cal4">Pasar a PDF</button>
@@ -98,19 +104,19 @@
 			  <section class="first row">
 			  	  
 				  <label class="label2">
-				    <input type="text" id="npvPeriods" required />
+				    <input type="number" step="any" id="npvPeriods" required />
 				    <div class="label-text">Periodos</div>
 				  </label>
 				  <label class="label2">
-				    <input type="text" id="npvPrincipal" required />
+				    <input type="number" step="any" id="npvPrincipal" required />
 				    <div class="label-text">Principal</div>
 				  </label>
 				  <label class="label2">
-				    <input type="text" id="npvInterest" required />
+				    <input type="number" step="any" id="npvInterest" required />
 				    <div class="label-text">Tasa de interes(%)</div>
 				  </label>
 				  <label class="label2">
-				    <input type="text" required id="nvpTax"/>
+				    <input type="number" step="any" required id="nvpTax"/>
 				    <div class="label-text">Tax Rate(%)</div>
 				  </label>
 				  <br>
@@ -123,12 +129,8 @@
 		          </section>
 		          <section>
 			          <label class="label2-2">
-					    <input type="text" required id="nvpSalvage"/>
+					    <input type="number" step="any" required id="nvpSalvage"/>
 					    <div class="label-text">Salvage Value</div>
-					  </label>
-					  <label class="label2-2">
-					    <input type="text" required />
-					    <div class="label-text">Period</div>
 					  </label>
 				  </section>
 			  </section>

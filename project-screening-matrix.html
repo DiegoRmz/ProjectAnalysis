@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">   
+				     
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+
+
+				<link rel="stylesheet" href="css/estilo.css">
+				
+				<link rel="shortcut icon" type="image/png" href="img/favicon.png">
+				
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+				
+				<script src="js/use.js"></script>
+				<script src="js/Comms.js"></script>
+
+				<script src="js/modules/NetPresentValue.js"></script>
+				<script src="js/modules/PaybackPeriod.js"></script>
+        
+        <title>Project Evaluator</title>
+    </head>
+    <body>
+        
+        <header class="header">
+            <div class="header__logo-box">
+                <!--<img src="img/logo-white.png" alt="logo" class="header__logo">-->
+            </div>
+
+            <div class="header__text-box"> 
+                <h1 class="heading-primary">
+                    <span class="heading-primary--main">Proyecto Final</span>
+                    <span class="heading-primary--sub">Administración de Proyectos</span>
+                </h1>
+                <form>
+		  
+				  <div class="question">
+				    <input type="text" required/>
+				    <label>Name of the analyst</label>
+				  </div>
+				  <div class="question">
+				    <input type="text" required/>
+				    <label>Name of the Project</label>
+				  </div>
+				  <!--<button>Submit</button>-->
+				</form>
+				<div class="tab">
+	                <a href="index.html" class="tablinks btn btn--white btn--animated">Payback Period</a>
+                    <a href="index.html" class="tablinks btn2 btn2--white btn2--animated">NPV</a>
+                    <a href="index.html" class="tablinks btn4 btn4--white btn4--animated">Depreciation</a>
+                    <button onclick="" class="tablinks btn3 btn3--white btn3--animated">Checklist</button>
+                    <button onclick="" class="tablinks btn3 btn3--white btn3--animated">Screening Matrix</button>
+            	</div>
+		    </div>        
+        </header>
+        <section class="third">
+            <div id="" class="tabcontent">
+                <h3>Primary considerations</h3>
+                <table id="primary_considerations">
+                <thead>
+                    <tr>
+                        <th>Consideration</th>
+                        <th>Rating</th>
+                        <th>Weighting</th>
+                        <th>Weighted value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Time constraints for project delivery</td>
+                        <td>
+                            <select id="tconstrain_select">
+                                <option disabled selected>Seleccionar un rating</option>
+                                <option value=0.2>Low</option>
+                                <option value=0.6>Medium</option>
+                                <option value=1>High</option>
+                            </select>
+                        </td>
+                        <td><input type="number" step="any" id="t_constrain_val" required></td>
+                        <td><input type="number" step="any" id="t_constrain_result" required></td>
+                    </tr>
+                    <tr>
+                        <td>Status of Environmental Approvals</td>
+                        <td>
+                            <select id="envaprov_select">
+                                <option disabled selected>Seleccionar un rating</option>
+                                <option value=0.2>Low</option>
+                                <option value=0.6>Medium</option>
+                                <option value=1>High</option>
+                            </select>
+                        </td>
+                        <td><input type="number" step="any" id="envaprov_val" required></td>
+                        <td><input type="number" step="any" id="envaprov_result" required></td>
+                    </tr>
+                    <tr>
+                        <td>Availability of funding</td>
+                        <td>
+                            <select id="fundaval_select">
+                                <option disabled selected>Seleccionar un rating</option>
+                                <option value=0.2>Low</option>
+                                <option value=0.6>Medium</option>
+                                <option value=1>High</option>
+                            </select>
+                        </td>
+                        <td><input type="number" step="any" id="fundaval_val" required></td>
+                        <td><input type="number" step="any" id="fundaval_result" required></td>
+                    </tr>
+                    <tr>
+                        <td>Well defined scope</td>
+                        <td>
+                            <select id="wdef_scope_select">
+                                <option disabled selected>Seleccionar un rating</option>
+                                <option value=0.2>Low</option>
+                                <option value=0.6>Medium</option>
+                                <option value=1>High</option>
+                            </select>
+                        </td>
+                        <td><input type="number" step="any" id="wdef_scope_val" required></td>
+                        <td><input type="number" step="any" id="wdef_scope_result" required></td>
+                    </tr>
+                </tbody>
+                </table>
+                <hr>
+                <h3>Secondary considerations</h3>
+                <table id="secondary_considerations">
+                    <thead>
+                        <tr>
+                            <th>Consideration</th>
+                            <th>Rating</th>
+                            <th>Weighting</th>
+                            <th>Weighted value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Overall project complexity</td>
+                            <td>
+                                <select id="over_prj_complex_select">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" max="10" id="over_prj_complex_val" required></td>
+                            <td><input type="number" step="any" max="10" id="over_prj_complex_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>Complexity of performance requirements</td>
+                            <td>
+                                <select id="complex_perf_reqs_select">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="complex_perf_reqs_val" required></td>
+                            <td><input type="number" step="any" id="complex_perf_reqs_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>Project size</td>
+                            <td>
+                                <select id="prj_size_select">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="prj_size_val" required></td>
+                            <td><input type="number" step="any" id="prj_size_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>Availability of qualified teams</td>
+                            <td>
+                                <select id="qual_tm_aval_select">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="qual_tm_aval_val" required></td>
+                            <td><input type="number" step="any" id="qual_tm_aval_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>Owner experience and resources</td>
+                            <td>
+                                <select id="own_xp_res_select">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="own_xp_res_val" required></td>
+                            <td><input type="number" step="any" id="own_xp_res_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>Cost of project</td>
+                            <td>
+                                <select id="cost_proj_select">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="cost_proj_val" required></td>
+                            <td><input type="number" step="any" id="cost_proj_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>Degree of team collaboration</td>
+                            <td>
+                                <select id="team_colab_select">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="team_colab_val" required></td>
+                            <td><input type="number" step="any" id="team_colab_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>Number of contracts</td>
+                            <td>
+                                <select id="num_contract_select">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="num_contract_val" required></td>
+                            <td><input type="number" step="any" id="num_contract_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>Allocation of risks</td>
+                            <td>
+                                <select id="risk_alloc_select">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="risk_alloc_val" required></td>
+                            <td><input type="number" step="any" id="risk_alloc_result" required></td>
+                        </tr>
+                        <tr>
+                            <td>Interest in innovation</td>
+                            <td>
+                                <select id="int_innov_select">
+                                    <option disabled selected>Seleccionar un rating</option>
+                                    <option value=0.2>Low</option>
+                                    <option value=0.6>Medium</option>
+                                    <option value=1>High</option>
+                                </select>
+                            </td>
+                            <td><input type="number" step="any" id="int_innov_val" required></td>
+                            <td><input type="number" step="any" id="int_innov_result" required></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <h3>Other considerations</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Consideration</th>
+                            <th>Rating</th>
+                            <th>Weighting</th>
+                            <th>Weighted value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+   </body>
+</html>
